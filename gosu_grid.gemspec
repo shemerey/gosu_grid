@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Gosu::Grid::VERSION
   spec.authors       = ['Anton Shemerey']
   spec.email         = ['shemerey@gmail.com']
-  spec.summary       = %q{Gosu::Grid object to handle game board grids}
-  spec.description   = %q{This is helper object to define game board and move objects around}
-  spec.homepage      = ''
+  spec.summary       = %q{Gosu::Grid simple game grids}
+  spec.description   = %q{This gem provide basic functional to draw game grid and move stuff around}
+  spec.homepage      = 'https://github.com/shemerey/gosu_grid'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")

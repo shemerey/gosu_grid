@@ -37,7 +37,7 @@ end
 
 class GridGameExample < Gosu::Window
   def initialize
-    super(540, 320, false)
+    super(540, 325, false)
 
     self.caption = "Gosu Grid"
 

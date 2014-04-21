@@ -1,6 +1,10 @@
-# GosuGrid
+# Gosu::Grid
 
-TODO: Write a gem description
+This gem just provides some methods to get game grid, fill it with cells, and
+move stuff around. You can easely modify it for your needs. Feel free to
+contribute in this project if you find it useful or interesting.
+
+![](https://github.com/shemerey/gosu_grid/blob/master/assets/gosu_grid_example.png)
 
 ## Installation
 
@@ -18,7 +22,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+#### How to Draw default grid
+
+```ruby
+class GridGameExample < Gosu::Window
+  def initialize
+    super(540, 320, false)
+    @grid = Gosu::Grid.new(self)
+    @grid.default_cell = DeadCell.new(self, 0, 0)
+  end
+
+  def draw
+    @grid.draw && sleep(0.05)
+  end
+end
+```
+
+more examples [here](example)
 
 ## Contributing
 
