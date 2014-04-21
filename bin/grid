@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+# vim:fen:fdm=marker:fmr={{{,}}}:fdl=0:fdc=1:ts=2:sw=2:sts=2:nu
+
+lib = File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'gosu'
+require 'gosu/all'
+
+class GameWindow < Gosu::Window
+  def initialize
+    super(642, 482, false)
+    self.caption = "Gosu Tutorial Game"
+
+    @grid = Gosu::Grid.new(self)
+  end
+
+  def button_down id
+    close if id == Gosu::KbEscape
+  end
+
+  def update
+  end
+
+  def draw
+    @grid.draw
+  end
+end
+
+GameWindow.new.show
