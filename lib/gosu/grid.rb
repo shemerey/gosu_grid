@@ -1,30 +1,65 @@
 require 'gosu/all'
 
 class Gosu::Grid
-  attr_reader :window, :cell_size, :cells
+  attr_reader :window, :cells
 
-  def initialize(window, cell_size = 16, row_count = nil, column_count = nil)
-    @window, @cell_size, @row_count, @column_count = window, cell_size, row_count, column_count
-    build
+  attr_accessor :x, :y, :z
+  attr_accessor :default_cell, :rows, :columns
+
+  def initialize(window)
+    @window, @cells = window, []
   end
 
-  def row_count
-    @row_count ||= (window.width / cell_size).to_i
+  def default_cell
+    @default_cell || raise(NotImplementedError, 'You have to define bacground cell')
   end
 
-  def column_count
-    @column_count ||= (window.height / cell_size).to_i
+  def x
+    @x ||= 0
+  end
+
+  def y
+    @y ||= 0
+  end
+
+  def z
+    @z ||= 0
+  end
+
+  def rows
+    @rows ||= default_rows
+  end
+
+  def columns
+    @columns ||= default_columns
   end
 
   def draw
+    default_cells.each do |cell|
+      cell.draw
+    end
+
     cells.each do |cell|
       cell.draw
     end
   end
 
-  def build
-    @cells ||= Matrix.build(row_count, column_count) do |row, col|
-      Gosu::Grid::Cell.new(window, cell_size, row, col)
+  private
+
+  def default_rows
+    (window.width / default_cell.size).to_i
+  end
+
+  def default_columns
+    (window.height / default_cell.size).to_i
+  end
+
+  def default_cells
+    @default_cells ||= Matrix.build(rows, columns) do |row, column|
+      default_cell.dup.tap do |cell|
+        cell.row = row
+        cell.column = column
+      end
     end
   end
 end

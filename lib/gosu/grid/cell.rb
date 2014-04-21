@@ -1,18 +1,32 @@
 require 'gosu/all'
 
 class Gosu::Grid::Cell
-  attr_reader :window, :size, :row, :col
+  attr_reader :window
+  attr_accessor :row, :column
 
-  def initialize(window, size, row, col)
-    @window, @size, @row, @col = window, size, row, col
-  end
-
-  def image_path
-    @image_path = 'assets/black_cell.png'
+  def initialize(window, row, column)
+    @window, @row, @column = window, row, column
+    yield if block_given?
   end
 
   def object
-    @object ||= Gosu::Image.new(window, image_path, false)
+    raise NotImplementedError, 'You have to define object to draw'
+  end
+
+  def right!(step = 1)
+    self.row += step
+  end
+
+  def left!(step = 1)
+    self.row -= step
+  end
+
+  def up!(step = 1)
+    self.column -= step
+  end
+
+  def down!(step = 1)
+    self.column += step
   end
 
   def x
@@ -20,7 +34,7 @@ class Gosu::Grid::Cell
   end
 
   def y
-    size * col
+    size * column
   end
 
   def z
@@ -29,6 +43,10 @@ class Gosu::Grid::Cell
 
   def draw
     object.draw(x, y, z)
+  end
+
+  def size
+    object.width
   end
 end
 
