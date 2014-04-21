@@ -4,7 +4,7 @@ This gem just provides some methods to get game grid, fill it with cells, and
 move stuff around. You can easely modify it for your needs. Feel free to
 contribute in this project if you find it useful or interesting.
 
-![](https://github.com/shemerey/gosu_grid/blob/master/assets/gosu_grid_example.png)
+![](https://raw.githubusercontent.com/shemerey/gosu_grid/master/assets/gosu_grid_example.png)
 
 ## Installation
 
