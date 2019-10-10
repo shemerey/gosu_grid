@@ -11,7 +11,7 @@ class Gosu::Grid
   end
 
   def default_cell
-    @default_cell || raise(NotImplementedError, 'You have to define bacground cell')
+    @default_cell || raise(NotImplementedError, 'You have to define background cell')
   end
 
   def x
